@@ -24,10 +24,9 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            eval `ssh-agent -s`
-            sh-add ~/.ssh/id_rsa_ametha_github_vps_deploy
-            cd /var/www/python/SoulNest_ML_Model && git pull origin main -v
-            cd /var/www/python/SoulNest_ML_Model && python3 -m venv .venv
-            cd /var/www/python/SoulNest_ML_Model && source .venv/bin/activate
-            cd /var/www/python/SoulNest_ML_Model && pip install -r requirements.txt
+            cd /var/www/python/SoulNest_ML_Model
+            git pull origin main -v
+            python3 -m venv .venv
+            source .venv/bin/activate
+            pip install -r requirements.txt
             # systemctl restart your-flask-service
