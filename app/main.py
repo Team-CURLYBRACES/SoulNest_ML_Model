@@ -8,14 +8,14 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 app = Flask(__name__)
 
 # Load the Naive Bayes model
-with open('flask_app/naive_bayes_model.pkl', 'rb') as model_file:
+with open('app/naive_bayes_model.pkl', 'rb') as model_file:
     naive_bayes_model = pickle.load(model_file)
 
 # Load CountVectorizer and TfidfTransformer
-with open('flask_app/count_vectorizer.pkl', 'rb') as cv_file:
+with open('app/count_vectorizer.pkl', 'rb') as cv_file:
     count_vectorizer = pickle.load(cv_file)
 
-with open('flask_app/tfidf_transformer.pkl', 'rb') as tfidf_file:
+with open('app/tfidf_transformer.pkl', 'rb') as tfidf_file:
     tfidf_transformer = pickle.load(tfidf_file)
 
 # Text preprocessing functions
