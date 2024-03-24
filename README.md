@@ -72,4 +72,10 @@ or
 source .venv/bin/activate && python flask_app/app.py
 ```
 
-The application will start on `http://127.0.0.1:5000/`. Open this URL in your web browser to see the "Hello, World!" message.
+or 
+
+```bash
+gunicorn -b 0.0.0.0:8001 -w 4 app.main:app --daemon
+
+server start command
+```
