@@ -12,8 +12,6 @@ Username: `root`
 
 Reserved IP: `139.59.221.132`
 
-Password: `:Q}QvvRDY8)vc`
-
 Project dir: `/var/www/python`
 
 ## File moving command
