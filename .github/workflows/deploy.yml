@@ -16,15 +16,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build ML Model (Flask) Docker image
-        run: docker build -t kenura/soul-nest_ml_model:latest -f Dockerfile .
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      - name: Push Docker images
-        env:
-          DOCKER_ACCESS_TOKEN: ${{ secrets.DOCKER_ACCESS_TOKEN }}
-        run: |
-          docker push kenura/soul-nest_ml_model:latest
-
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/soul-nest_ml_model:latest
+          
       - name: SSH into VPS and pull latest changes
         uses: appleboy/ssh-action@master
         with:
@@ -33,6 +41,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd /var/www/python/SoulNest_ML_Model
+            cd /var/www/python/soulnest_ml_model
             docker-compose -f docker-compose.yml pull
             docker-compose -f docker-compose.yml up -d
