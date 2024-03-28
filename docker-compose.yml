@@ -3,12 +3,9 @@ version: "3"
 
 services:
   flask:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: kenura/soul-nest_ml_model:latest
     ports:
       - "8001:8000"
-    image: kenura/soul-nest_ml_model:latest
 
   nginx:
     image: nginx:latest
