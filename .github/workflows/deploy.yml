@@ -16,12 +16,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build and push Docker images
+      - name: Build ML Model (Flask) Docker image
+        run: docker build -t kenura/soul-nest_ml_model:latest -f Dockerfile .
+
+      - name: Push Docker images
         env:
-            DOCKER_ACCESS_TOKEN: ${{ secrets.DOCKER_ACCESS_TOKEN }}  # Use a secret to store the access token
+          DOCKER_ACCESS_TOKEN: ${{ secrets.DOCKER_ACCESS_TOKEN }}
         run: |
-          docker-compose -f docker-compose.yml build
-          docker-compose -f docker-compose.yml push
+          docker push kenura/soul-nest_ml_model:latest
 
       - name: SSH into VPS and pull latest changes
         uses: appleboy/ssh-action@master
