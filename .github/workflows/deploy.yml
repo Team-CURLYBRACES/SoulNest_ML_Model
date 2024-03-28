@@ -16,6 +16,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Build and push Docker images
+        run: |
+          docker-compose -f docker-compose.yml build
+          docker-compose -f docker-compose.yml push
+
       - name: SSH into VPS and pull latest changes
         uses: appleboy/ssh-action@master
         with:
