@@ -17,6 +17,8 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build and push Docker images
+        env:
+            DOCKER_ACCESS_TOKEN: ${{ secrets.DOCKER_ACCESS_TOKEN }}  # Use a secret to store the access token
         run: |
           docker-compose -f docker-compose.yml build
           docker-compose -f docker-compose.yml push
