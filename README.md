@@ -34,7 +34,14 @@ docker-compose up --build -d
 
 ## Deployment to vps
 
+Just push chnages normally.
 
+Make shure to have a location `/var/www/python/SoulNest_ML_Model` in vps.
+
+and the two docker images in your repo like
+
+1. registry.example.com/flaskapp:latest
+2. registry.example.com/nginxapp:latest
 
 ## Deployment without docker
 
