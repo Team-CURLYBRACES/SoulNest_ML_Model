@@ -5,17 +5,16 @@ services:
   flask:
     build:
       context: .
-      dockerfile: Dockerfile.flask
+      dockerfile: Dockerfile
     ports:
       - "8001:8000"
     image: registry.example.com/flaskapp:latest
 
   nginx:
-    build:
-      context: .
-      dockerfile: Dockerfile.nginx
+    image: nginx:latest
     ports:
       - "81:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - flask
-    image: registry.example.com/nginxapp:latest
