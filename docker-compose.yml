@@ -8,6 +8,7 @@ services:
       dockerfile: Dockerfile.flask
     ports:
       - "8001:8000"
+    image: registry.example.com/flaskapp:latest
 
   nginx:
     build:
@@ -17,3 +18,4 @@ services:
       - "81:80"
     depends_on:
       - flask
+    image: registry.example.com/nginxapp:latest

@@ -20,9 +20,23 @@ Project dir: `/var/www/python`
 rsync -avz --exclude '.venv' --exclude '.git' --exclude '__pycache__' ./ root@139.59.221.132:/var/www/python/SoulNest_ML_Model/
 ```
 
-### Working one
+## Deployment
 
-## Installation
+1. Add github deployment public key to github which is generated in the the pc/vps.
+
+2. Clone the project
+
+3. Make shure to chnage the `server_name localhost;` in `nginx.conf` before getting changes.
+
+```bash
+docker-compose up --build -d
+```
+
+## Deployment to vps
+
+
+
+## Deployment without docker
 
 1. Set up a virtual environment (optional but recommended):
 
@@ -72,11 +86,10 @@ or
 source .venv/bin/activate && python flask_app/app.py
 ```
 
-or 
+or
 
 ```bash
 gunicorn -b 0.0.0.0:8001 -w 4 app.main:app --daemon
 
 server start command
 ```
-#

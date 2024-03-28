@@ -1,4 +1,4 @@
-name: Deploy to VPS
+name: Deploy
 
 on:
   push:
@@ -16,8 +16,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: SSH deploy
-        uses: appleboy/ssh-action@v1.0.0
+      - name: Build and push Docker images
+        run: |
+          docker-compose -f docker-compose.yml build
+          docker-compose -f docker-compose.yml push
+
+      - name: SSH into VPS and pull latest changes
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
@@ -25,8 +30,5 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd /var/www/python/SoulNest_ML_Model
-            git pull origin main -v
-            python3 -m venv .venv
-            source .venv/bin/activate
-            pip install -r requirements.txt
-            # systemctl restart your-flask-service
+            docker-compose -f docker-compose.yml pull
+            docker-compose -f docker-compose.yml up -d
