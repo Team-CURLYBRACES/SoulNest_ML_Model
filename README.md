@@ -1,25 +1,5 @@
 # SoulNest ML Model
 
-## SSH Access
-
-```bash
-ssh root@139.59.221.132
-```
-
-IPv4 : `178.128.93.119`
-
-Username: `root`
-
-Reserved IP: `139.59.221.132`
-
-Project dir: `/var/www/python`
-
-## File moving command
-
-```bash
-rsync -avz --exclude '.venv' --exclude '.git' --exclude '__pycache__' ./ root@139.59.221.132:/var/www/python/SoulNest_ML_Model/
-```
-
 ## Deployment
 
 1. Add github deployment public key to github which is generated in the the pc/vps.
