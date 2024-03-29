@@ -53,7 +53,6 @@ def index():
             
             # Vectorize the processed sentence
             response_count = count_vectorizer.transform([processed_sentence])
-            return "hello word"
             response_tfidf = tfidf_transformer.transform(response_count)
 
             # Make prediction for the sentence
