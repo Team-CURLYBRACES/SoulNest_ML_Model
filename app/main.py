@@ -31,47 +31,50 @@ def remove_stopwords(response):
 # Define route for root URL
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    # Get user response from request
-    data = request.json
-    user_response = data.get('response')
+    try:
+        # Get user response from request
+        data = request.json
+        user_response = data.get('response')
 
-    # Tokenize the input text into sentences
-    sentences = re.split(r'[.!?]', user_response)
+        # Tokenize the input text into sentences
+        sentences = re.split(r'[.!?]', user_response)
 
-    # Initialize counters
-    total_sentences = len(sentences)
-    stress_count = 0
-    predictions = []
-    
-    # Process each sentence
-    for sentence in sentences:
-       
-        # Preprocess the input data
-        processed_sentence = remove_punct(sentence)
-        processed_sentence = remove_stopwords(processed_sentence)
+        # Initialize counters
+        total_sentences = len(sentences)
+        stress_count = 0
+        predictions = []
         
-        # Vectorize the processed sentence
-        response_count = count_vectorizer.transform(processed_sentence)
-        return "hello word"
-        response_tfidf = tfidf_transformer.transform(response_count)
+        # Process each sentence
+        for sentence in sentences:
+        
+            # Preprocess the input data
+            processed_sentence = remove_punct(sentence)
+            processed_sentence = remove_stopwords(processed_sentence)
+            
+            # Vectorize the processed sentence
+            response_count = count_vectorizer.transform([processed_sentence])
+            return "hello word"
+            response_tfidf = tfidf_transformer.transform(response_count)
 
-        # Make prediction for the sentence
-        prediction = naive_bayes_model.predict(response_tfidf)
-        predictions.append(prediction[0])
+            # Make prediction for the sentence
+            prediction = naive_bayes_model.predict(response_tfidf)
+            predictions.append(prediction[0])
 
-        # Update stress count
-        if prediction == 'Stress':
-            stress_count += 1
+            # Update stress count
+            if prediction == 'Stress':
+                stress_count += 1
 
-    # Calculate stress percentage
-    stress_percentage = (stress_count / total_sentences) * 100
-
-    # Return predictions, stress count, and stress percentage as JSON response
-    return jsonify({
-        'predictions': predictions,
-        'stress_count': stress_count,
-        'stress_percentage': stress_percentage
-    })
+        # Calculate stress percentage
+        stress_percentage = (stress_count / total_sentences) * 100
+    except Exception as e:
+        print(e)
+        # Return predictions, stress count, and stress percentage as JSON response
+        return jsonify({
+            'predictions': predictions,
+            'stress_count': stress_count,
+            'stress_percentage': stress_percentage
+        })
+    
 
 @app.route('/predict', methods=['POST'])
 def predict():
