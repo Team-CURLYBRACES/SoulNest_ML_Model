@@ -42,5 +42,5 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd /var/www/python/soulnest_ml_model
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/soul-soulnest_ml_model:latest
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/soul-nest_ml_model:latest
             docker-compose up -d --build && exit
