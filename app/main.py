@@ -35,7 +35,7 @@ def index():
 
 @app.route('/predict', methods=['POST', 'GET'])
 def predict():
-    return Response("Hello, World!", status=200, mimetype='text/plain')
+    return 'HELOOOOOOO'
     # Get user response from request
     user_response = request.json['response']
 
