@@ -42,13 +42,13 @@ def index():
     total_sentences = len(sentences)
     stress_count = 0
     predictions = []
-    
+    return "hello word"
     # Process each sentence
     for sentence in sentences:
         # Preprocess the input data
         processed_sentence = remove_punct(sentence)
         processed_sentence = remove_stopwords(processed_sentence)
-        return "hello word"
+        
         # Vectorize the processed sentence
         response_count = count_vectorizer.transform([processed_sentence])
         response_tfidf = tfidf_transformer.transform(response_count)
