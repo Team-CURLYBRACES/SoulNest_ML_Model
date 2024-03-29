@@ -32,8 +32,9 @@ def remove_stopwords(response):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     # Get user response from request
-    user_response = request.json['response']
-
+    data = request.json
+    user_response = data.get('response')
+    return stress_count
     # Tokenize the input text into sentences
     sentences = re.split(r'[.!?]', user_response)
     
@@ -41,7 +42,7 @@ def index():
     total_sentences = len(sentences)
     stress_count = 0
     predictions = []
-    return stress_count
+    
     # Process each sentence
     for sentence in sentences:
         # Preprocess the input data
