@@ -67,7 +67,7 @@ def index():
         # Calculate stress percentage
         stress_percentage = (stress_count / total_sentences) * 100
     except Exception as e:
-        return {"message":e}
+        return e
         # Return predictions, stress count, and stress percentage as JSON response
         return jsonify({
             'predictions': predictions,
