@@ -33,7 +33,7 @@ def remove_stopwords(response):
 def index():
     return 'Welcome to the Stress Detection API!'
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['POST', 'GET'])
 def predict():
     return Response("Hello, World!", status=200, mimetype='text/plain')
     # Get user response from request
