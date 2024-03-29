@@ -45,9 +45,10 @@ def index():
     
     # Process each sentence
     for sentence in sentences:
-        return "hello word"
+       
         # Preprocess the input data
         processed_sentence = remove_punct(sentence)
+        return "hello word"
         processed_sentence = remove_stopwords(processed_sentence)
         
         # Vectorize the processed sentence
