@@ -34,7 +34,7 @@ def index():
     # Get user response from request
     data = request.json
     user_response = data.get('response')
-    return user_response
+    
     # Tokenize the input text into sentences
     sentences = re.split(r'[.!?]', user_response)
     
