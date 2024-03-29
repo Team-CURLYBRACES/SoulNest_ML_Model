@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, Response
 import pickle
 import re
 import string
@@ -33,8 +33,9 @@ def remove_stopwords(response):
 def index():
     return 'Welcome to the Stress Detection API!'
 
-@app.route('/predictions', methods=['POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
+    return Response("Hello, World!", status=200, mimetype='text/plain')
     # Get user response from request
     user_response = request.json['response']
 
