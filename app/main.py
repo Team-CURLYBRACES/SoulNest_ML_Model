@@ -34,10 +34,10 @@ def index():
     # Get user response from request
     data = request.json
     user_response = data.get('response')
-    
+
     # Tokenize the input text into sentences
     sentences = re.split(r'[.!?]', user_response)
-    
+    return sentences
     # Initialize counters
     total_sentences = len(sentences)
     stress_count = 0
