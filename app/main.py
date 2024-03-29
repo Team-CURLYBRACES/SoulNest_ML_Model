@@ -29,7 +29,7 @@ def remove_stopwords(response):
     return " ".join(filtered_words)
 
 # Define route for root URL
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     return 'Welcome to the Stress Detection API!'
 
