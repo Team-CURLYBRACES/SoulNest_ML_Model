@@ -31,6 +31,7 @@ def remove_stopwords(response):
 # Define route for root URL
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    return "got here at least"
     # Get user response from request
     user_response = request.json['response']
 
