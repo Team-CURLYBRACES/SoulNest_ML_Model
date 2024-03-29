@@ -42,9 +42,10 @@ def index():
     total_sentences = len(sentences)
     stress_count = 0
     predictions = []
-    return "hello word"
+    
     # Process each sentence
     for sentence in sentences:
+        return "hello word"
         # Preprocess the input data
         processed_sentence = remove_punct(sentence)
         processed_sentence = remove_stopwords(processed_sentence)
