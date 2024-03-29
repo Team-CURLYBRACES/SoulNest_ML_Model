@@ -43,4 +43,4 @@ jobs:
           script: |
             cd /var/www/python/soulnest_ml_model
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/soul-soulnest_ml_model:latest
-            docker-compose up -d --build
+            docker-compose up -d --build && exit
