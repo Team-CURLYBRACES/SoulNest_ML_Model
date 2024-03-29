@@ -48,7 +48,7 @@ def index():
         # Preprocess the input data
         processed_sentence = remove_punct(sentence)
         processed_sentence = remove_stopwords(processed_sentence)
-
+        return "hello word"
         # Vectorize the processed sentence
         response_count = count_vectorizer.transform([processed_sentence])
         response_tfidf = tfidf_transformer.transform(response_count)
@@ -63,7 +63,7 @@ def index():
 
     # Calculate stress percentage
     stress_percentage = (stress_count / total_sentences) * 100
-    return stress_percentage
+
     # Return predictions, stress count, and stress percentage as JSON response
     return jsonify({
         'predictions': predictions,
