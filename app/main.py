@@ -37,7 +37,7 @@ def index():
 
     # Tokenize the input text into sentences
     sentences = re.split(r'[.!?]', user_response)
-    return sentences
+
     # Initialize counters
     total_sentences = len(sentences)
     stress_count = 0
@@ -63,7 +63,7 @@ def index():
 
     # Calculate stress percentage
     stress_percentage = (stress_count / total_sentences) * 100
-
+    return stress_percentage
     # Return predictions, stress count, and stress percentage as JSON response
     return jsonify({
         'predictions': predictions,
