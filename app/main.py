@@ -29,7 +29,7 @@ def remove_stopwords(response):
     return " ".join(filtered_words)
 
 # Define route for root URL
-@app.route('/')
+@app.route('/', methods=['POST'])
 def predict():
     # Get user response from request
     user_response = request.json['response']
