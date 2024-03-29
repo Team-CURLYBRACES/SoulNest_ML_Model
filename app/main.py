@@ -31,7 +31,7 @@ def remove_stopwords(response):
 # Define route for root URL
 @app.route('/')
 def index():
-    return 'Hello World'
+    return 'Welcome to the Stress Detection API!'
 
 @app.route('/predict', methods=['POST'])
 def predict():
