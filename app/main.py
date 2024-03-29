@@ -51,7 +51,7 @@ def index():
         processed_sentence = remove_stopwords(processed_sentence)
         
         # Vectorize the processed sentence
-        response_count = count_vectorizer.transform([processed_sentence])
+        response_count = count_vectorizer.transform(processed_sentence)
         return "hello word"
         response_tfidf = tfidf_transformer.transform(response_count)
 
