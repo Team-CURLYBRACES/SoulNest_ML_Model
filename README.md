@@ -1,4 +1,7 @@
 # SoulNest ML Model
+SoulNest utilizes a Multinomial Naive Bayes classifier for text classification tasks. This model is particularly suitable for scenarios where the features (in this case, words or tokens) are categorical and independent. The Multinomial Naive Bayes classifier calculates the probability of each class (e.g., "Stress" or "Normal") given a set of features and then predicts the class with the highest probability.
+
+The model is trained on a dataset containing responses, where each response is associated with a label indicating whether it represents a state of "Stress" or "Normal." Before training, the text data undergoes preprocessing steps such as punctuation removal, stop-word removal, and vectorization using techniques like CountVectorizer and TF-IDF (Term Frequency-Inverse Document Frequency) transformation.The Multinomial Naive Bayes model offers a lightweight and efficient solution for text classification tasks, making it well-suited for applications like sentiment analysis, spam detection, and in SoulNest's case, identifying stress-related responses.
 
 ## Deployment
 
